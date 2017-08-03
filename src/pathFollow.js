@@ -1,7 +1,8 @@
-queue()
-.defer(d3.xml,  Flourish.static_prefix + "/alsterPath.svg", "image/svg+xml")
-.await(ready);
-
+export default function() {
+  queue()
+  .defer(d3.xml,  Flourish.static_prefix + "/alsterPath.svg", "image/svg+xml")
+  .await(ready);
+}
 
 function ready(error, xml) {
 
@@ -33,7 +34,7 @@ function ready(error, xml) {
         .attrTween("transform", translateAlong(path.node()))
         .each("end", transition);// infinite loop
   }
-  
+
   function translateAlong(path) {
     var l = path.getTotalLength();
     return function(i) {
